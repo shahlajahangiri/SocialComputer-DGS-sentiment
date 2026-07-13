@@ -1,4 +1,0 @@
-rank,feature_name,global_importance,shap_negative,shap_neutral,shap_positive,dominant_sentiment
-1,head_pitch_deg_mean,0.089134224,0.09124861,0.10006145,0.09349798,neutral
-2,head_yaw_deg_mean,0.08826706,0.08435839,0.08244373,0.08261242,negative
-3,head_pitch_deg_std,0.08011612,0.08054924,0.07398924,0.07724568,negative

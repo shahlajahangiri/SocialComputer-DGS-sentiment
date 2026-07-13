@@ -1,7 +1,7 @@
 """
-Evaluation metrics, plots, and — most importantly — Mapping Rules extraction.
+Evaluation metrics, plots, and — most importantly — Sentiment Guidelines extraction.
 
-Mapping Rules are the Phase 1 output that feeds into Phase 2 as "Input Valence."
+Sentiment Guidelines are the Phase 1 output that feeds into Phase 2 as "Input Valence."
 They tell Phase 2: "when these motion features have these values → apply this sentiment."
 """
 
@@ -49,26 +49,31 @@ def plot_confusion_matrix(y_true, y_pred, model_name="Model", save=True):
 
 
 # ──────────────────────────────────────────────────────────────
-# SHAP-based Mapping Rules (XGBoost)
+# SHAP-based Sentiment Guidelines (XGBoost)
 # ──────────────────────────────────────────────────────────────
 
-def extract_mapping_rules_xgboost(model, X, feature_names, top_k=20, save=True):
+def extract_guidelines_xgboost(model, X, feature_names, top_k=20, save=True):
     """
-    Use SHAP values to extract interpretable mapping rules from XGBoost.
+    Use SHAP values to extract interpretable sentiment guidelines from XGBoost.
 
     Output CSV columns:
       feature_name | importance | negative_shap | neutral_shap | positive_shap
-                   | dominant_sentiment | direction
+                   | dominant_sentiment
 
-    This CSV is the "Mapping Rules" block in the Phase 1 workflow.
+    This CSV is the "Sentiment Guidelines" block in the Phase 1 workflow.
     It tells Phase 2: which features signal which sentiment.
     """
     print("Computing SHAP values (may take ~30 seconds) ...")
     explainer = shap.TreeExplainer(model)
-    shap_values = explainer.shap_values(X)   # list of 3 arrays (one per class)
+    shap_values = explainer.shap_values(X)
 
-    # mean |SHAP| per feature per class
-    mean_shap = np.array([np.abs(sv).mean(axis=0) for sv in shap_values])  # (3, n_features)
+    # Handle both old SHAP format (list of arrays) and new format (3D array)
+    # Old: list of 3 arrays each shape (n_samples, n_features)
+    # New: single array shape (n_samples, n_features, n_classes)
+    if isinstance(shap_values, list):
+        mean_shap = np.array([np.abs(sv).mean(axis=0) for sv in shap_values])  # (3, n_features)
+    else:
+        mean_shap = np.abs(shap_values).mean(axis=0).T  # → (n_classes, n_features)
     global_importance = mean_shap.mean(axis=0)
 
     top_idx = np.argsort(global_importance)[::-1][:top_k]
@@ -94,9 +99,9 @@ def extract_mapping_rules_xgboost(model, X, feature_names, top_k=20, save=True):
     rules_df = pd.DataFrame(rules)
 
     if save:
-        path = os.path.join(OUTPUT_DIR, "rules", "mapping_rules_xgboost.csv")
+        path = os.path.join(OUTPUT_DIR, "rules", "guidelines_xgboost.csv")
         rules_df.to_csv(path, index=False)
-        print(f"Mapping rules saved → {path}")
+        print(f"Guidelines saved → {path}")
 
     return rules_df
 

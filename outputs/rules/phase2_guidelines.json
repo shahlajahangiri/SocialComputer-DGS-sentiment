@@ -1,0 +1,35 @@
+{
+  "_description": "Phase 1 Sentiment Guidelines. Alpha values are relative to neutral (neutral = 0.0). Positive alpha = more movement than neutral; negative alpha = less movement than neutral. Use in: x_new = clip(x + m * alpha * v * V_max, L, U). V_max values must be provided by teammates from Table 5.1 of Mishra thesis.",
+  "valence_guidelines": {
+    "negative": {
+      "domhandreloc": -0.4241,
+      "ndomhandreloc": -0.4932,
+      "domshoulderreloc": -0.2823,
+      "ndomshoulderreloc": -0.5992,
+      "torsoreloc": 0.1065,
+      "torsorot": -0.4884,
+      "headrot": 0.2245,
+      "speed": -0.7963
+    },
+    "neutral": {
+      "domhandreloc": 0.0,
+      "ndomhandreloc": 0.0,
+      "domshoulderreloc": 0.0,
+      "ndomshoulderreloc": 0.0,
+      "torsoreloc": 0.0,
+      "torsorot": 0.0,
+      "headrot": 0.0,
+      "speed": 0.0
+    },
+    "positive": {
+      "domhandreloc": -0.141,
+      "ndomhandreloc": -0.6392,
+      "domshoulderreloc": -0.3598,
+      "ndomshoulderreloc": -0.2781,
+      "torsoreloc": 0.6637,
+      "torsorot": 0.2048,
+      "headrot": -0.2941,
+      "speed": -0.5784
+    }
+  }
+}

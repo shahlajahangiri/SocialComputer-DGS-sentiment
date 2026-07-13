@@ -20,18 +20,19 @@ from sklearn.preprocessing import StandardScaler
 # 1. XGBoost Baseline (tabular features)
 # ──────────────────────────────────────────────────────────────
 
-def build_xgboost(n_classes=3, scale_pos_weight=None):
+def build_xgboost(n_classes=3, **kwargs):
     """
-    XGBoost on 396 pre-computed MotionFeatures.
-    Replicates and extends the paper's approach.
+    XGBoost on body motion features.
+    Default hyperparameters are reasonable starting points.
+    Notebook 03 runs a grid search and overrides these with the best found values.
     """
-    model = XGBClassifier(
+    params = dict(
         n_estimators=500,
         max_depth=6,
         learning_rate=0.05,
         subsample=0.8,
         colsample_bytree=0.8,
-        use_label_encoder=False,
+        min_child_weight=1,
         eval_metric="mlogloss",
         objective="multi:softmax",
         num_class=n_classes,
@@ -39,7 +40,8 @@ def build_xgboost(n_classes=3, scale_pos_weight=None):
         n_jobs=1,
         early_stopping_rounds=30,
     )
-    return model
+    params.update(kwargs)
+    return XGBClassifier(**params)
 
 
 # ──────────────────────────────────────────────────────────────

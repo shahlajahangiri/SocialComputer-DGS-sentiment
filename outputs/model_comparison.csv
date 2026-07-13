@@ -1,5 +1,5 @@
 Model,Balanced Accuracy,Type
 XGBoost (paper),0.631,Baseline (paper)
-XGBoost (ours),0.5933378765936905,Baseline (ours)
-1D CNN,0.5933378765936905,Novel
-TCN,0.5559823948661158,Novel
+XGBoost (ours),0.593,Baseline (ours)
+1D CNN,0.5890247702340725,Novel
+TCN,0.5523715251157112,Novel

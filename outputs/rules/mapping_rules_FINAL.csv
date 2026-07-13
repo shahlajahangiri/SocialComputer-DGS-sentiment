@@ -1,4 +1,0 @@
-rank,feature_name,body_part,dominant_sentiment,global_importance,shap_negative,shap_neutral,shap_positive,rule_description
-1,head_pitch_deg_mean,head,neutral,0.089134224,0.09124861,0.10006145,0.09349798,High 'head_pitch_deg_mean' → sentiment: neutral  (importance=0.089)
-2,head_yaw_deg_mean,head,negative,0.08826706,0.08435839,0.08244373,0.08261242,High 'head_yaw_deg_mean' → sentiment: negative  (importance=0.088)
-3,head_pitch_deg_std,head,negative,0.08011612,0.08054924,0.07398924,0.07724568,High 'head_pitch_deg_std' → sentiment: negative  (importance=0.080)

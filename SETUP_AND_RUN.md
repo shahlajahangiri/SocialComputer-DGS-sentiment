@@ -1,7 +1,7 @@
 # Phase 1 - Setup and Run Guide
 
 ## What this does
-Trains ML models (XGBoost, 1D CNN, TCN) on DGS sign language videos to classify sentiment (negative, neutral, positive) and produces Mapping Rules for Phase 2.
+Trains ML models (XGBoost, 1D CNN, TCN) on DGS sign language videos to classify sentiment (negative, neutral, positive) and produces Sentiment Guidelines for Phase 2.
 
 ---
 
@@ -82,7 +82,7 @@ Close any chart windows that pop up during notebook 02 to allow the script to co
 All outputs are saved in the `outputs/` folder:
 
 - `outputs/plots/` - figures
-- `outputs/rules/mapping_rules_FINAL.csv` - Mapping Rules for Phase 2
+- `outputs/rules/guidelines_FINAL.csv` - Sentiment Guidelines for Phase 2
 - `outputs/rules/valence_scores_xgboost.csv` - Input Valence for Phase 2
 - `outputs/model_comparison.csv` - model comparison table
 
