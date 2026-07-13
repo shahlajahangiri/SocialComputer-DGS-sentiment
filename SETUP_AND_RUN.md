@@ -90,12 +90,12 @@ All outputs are saved in the `outputs/` folder:
 
 ## Actual results (body features only, no face)
 
-| Model | Balanced Accuracy |
-|-------|------------------|
-| XGBoost (paper baseline) | 0.631 |
-| XGBoost (ours) | 0.593 |
-| 1D CNN | 0.593 |
-| TCN | 0.556 |
+| Model | Type | Balanced Accuracy |
+|-------|------|------------------|
+| XGBoost (paper baseline) | Classical ML, with face features | 0.631 |
+| XGBoost (ours) | Classical ML, tabular features | 0.596 |
+| 1D CNN | Neural network, temporal sequences | 0.589 |
+| TCN | Advanced neural network, long-range patterns | 0.552 |
 
 Face features were excluded because they are not implemented in Phase 2.
 
