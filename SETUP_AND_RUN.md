@@ -93,11 +93,11 @@ All outputs are saved in the `outputs/` folder:
 | Model | Type | Balanced Accuracy |
 |-------|------|------------------|
 | XGBoost (paper baseline) | Classical ML, with face features | 0.631 |
-| XGBoost (ours) | Classical ML, tabular features | 0.596 |
-| 1D CNN | Neural network, temporal sequences | 0.589 |
-| TCN | Advanced neural network, long-range patterns | 0.552 |
+| XGBoost (ours, body only) | Classical ML, no face features | 0.596 |
+| 1D CNN (ours, body only) | Neural network, temporal sequences | 0.589 |
+| TCN (ours, body only) | Advanced neural network, long-range patterns | 0.552 |
 
-Face features were excluded because they are not implemented in Phase 2.
+Face features were intentionally excluded because the MMS player does not support facial expression modulation in Phase 2. The gap between our results and the paper baseline (0.631) is explained by this deliberate design decision, not by model weakness.
 
 ---
 
