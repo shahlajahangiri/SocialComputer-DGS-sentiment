@@ -39,10 +39,10 @@ Note: notebooks 03 and 04 require the thread limit flags on Mac to prevent a cra
 
 | Model | Balanced Accuracy |
 |-------|------------------|
-| XGBoost (paper baseline) | 0.631 |
-| XGBoost (ours, body only) | 0.593 |
-| 1D CNN | 0.593 |
-| TCN | 0.556 |
+| XGBoost (paper baseline, with face) | 0.631 |
+| XGBoost (ours, body only) | 0.596 |
+| 1D CNN (ours, body only) | 0.589 |
+| TCN (ours, body only) | 0.552 |
 
 Face features were intentionally excluded as they are not implemented in Phase 2. The paper identifies face tracking as a known limitation.
 
