@@ -141,6 +141,6 @@ notebook 05: combines guidelines_xgboost.csv + valence_scores_xgboost.csv
 
 ## Notes on Known Limitations
 
-- Dataset size (517 segments) limits neural network performance relative to XGBoost — see `README.md` for the full results comparison.
+- Dataset size (517 segments) limits neural network performance relative to XGBoost (see `README.md` for the full results comparison).
 - Face features are intentionally excluded throughout, since the MMS Player does not support facial modulation.
-- SHAP importance scores (`guidelines_FINAL.csv`) are used as **evidence** to inform Phase 2's manually assigned modulation values — they are not used as direct modulation weights.
+- SHAP importance scores (`guidelines_FINAL.csv`) are used as **evidence** to inform Phase 2's manually assigned modulation values (they are not used as direct modulation weights).
